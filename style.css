@@ -1,3 +1,7 @@
+body{
+  background:#fafafa;
+}
+
 .login-container {
   display:flex;
   justify-content:center;
@@ -11,6 +15,7 @@
   background:#fff;
   border:1px solid #ddd;
   text-align:center;
+  border-radius:8px;
 }
 
 .logo {
