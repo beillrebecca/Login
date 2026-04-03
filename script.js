@@ -22,6 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   goSignup?.addEventListener("click", () => {
-    location.href = "signup.html";
+    location.href = "../Signup/";
   });
 });
