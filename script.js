@@ -4,24 +4,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const goSignup = document.getElementById("goSignup");
 
   loginBtn?.addEventListener("click", () => {
-    const user = document.getElementById("username").value;
+    const input = document.getElementById("username").value;
     const pass = document.getElementById("password").value;
-    const storedUser = localStorage.getItem("loginUser");
-    const storedPass = localStorage.getItem("loginPass");
 
-    if(user === storedUser && pass === storedPass){
-      location.href = "../Profile/";
+    const storedData = JSON.parse(localStorage.getItem("loginUserData") || "{}");
+
+    if(input === storedData.username && pass === storedData.password){
+      alert(`ようこそ ${storedData.username} さん！`);
+      location.href = "home.html"; // ログイン成功
     } else {
       alert("ユーザー名かパスワードが違います");
     }
   });
 
   guestBtn?.addEventListener("click", () => {
-    localStorage.setItem("loginUser", "guest");
-    location.href = "../Signup/";
+    localStorage.setItem("loginUserData", JSON.stringify({username:"guest"}));
+    location.href = "index.html";
   });
 
   goSignup?.addEventListener("click", () => {
-    location.href = "../Signup/";
+    location.href = "../Signup/"; // Signup ページに移動
   });
 });
