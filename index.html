@@ -13,7 +13,8 @@
 
     <div class="logo">Recomen</div>
 
-    <input type="text" id="loginInput" placeholder="ユーザーネームまたはメール/電話">
+    <!-- メールまたは電話番号 -->
+    <input type="text" id="loginInput" placeholder="メールアドレスまたは電話番号">
     <input type="password" id="loginPassword" placeholder="パスワード">
 
     <button id="loginBtn">ログイン</button>
@@ -23,6 +24,22 @@
   </div>
 </div>
 
-<script src="script.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.11.0/firebase-auth-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCo1YZczL9GYsYkW4L2XBEM-SBWRvEUUUo",
+    authDomain: "recomen-91703.firebaseapp.com",
+    projectId: "recomen-91703",
+    storageBucket: "recomen-91703.appspot.com",
+    messagingSenderId: "361705732453",
+    appId: "1:361705732453:web:54b7c1113e687baa5a098c"
+  };
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script src="login.js"></script>
 </body>
 </html>
