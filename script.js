@@ -1,34 +1,29 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const loginBtn = document.getElementById("loginBtn");
-  const guestBtn = document.getElementById("guestBtn");
-  const goSignup = document.getElementById("goSignup");
+const auth = firebase.auth();
 
-  loginBtn?.addEventListener("click", () => {
-    const input = document.getElementById("loginInput").value.trim();
-    const password = document.getElementById("loginPassword").value.trim();
+loginBtn?.addEventListener("click", async () => {
+  const input = document.getElementById("loginInput").value.trim();
+  const password = document.getElementById("loginPassword").value.trim();
 
-    const storedData = JSON.parse(localStorage.getItem("userData"));
+  try {
+    if (input.includes("@")) {
+      // メールログイン
+      const userCredential = await auth.signInWithEmailAndPassword(input, password);
+      const user = userCredential.user;
 
-    if(!storedData){
-      alert("登録されたユーザーがいません");
-      return;
-    }
+      if (!user.emailVerified) {
+        alert("メール認証が完了していません");
+        return;
+      }
 
-    // メール/電話 or ユーザーネーム + パスワードで照合
-    if((input === storedData.username || input === storedData.contact) && password === storedData.password){
       alert("ログイン成功！");
-      location.href = "home.html"; // ログイン後ページ
+      window.location.href = "home.html";
+
     } else {
-      alert("ユーザー名かパスワードが違います");
+      // 電話番号ログインは SMS 認証フローが必要
+      alert("電話番号ログインは verify ページ経由です");
     }
-  });
 
-  guestBtn?.addEventListener("click", () => {
-    localStorage.setItem("userData", JSON.stringify({ username: "guest", contact:"", password:"" }));
-    location.href = "home.html";
-  });
-
-  goSignup?.addEventListener("click", () => {
-    location.href = "../Signup/"; // Signupページに遷移
-  });
+  } catch (error) {
+    alert("ログインエラー: " + error.message);
+  }
 });
