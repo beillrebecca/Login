@@ -4,14 +4,14 @@
 body {
   background: #fafafa;
   margin: 0;
-  font-family: sans-serif;
+  font-family: 'Galada', cursive;
 }
 
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100vh; /* 画面全体の中央に配置 */
 }
 
 .login-box {
@@ -29,34 +29,34 @@ body {
   margin-bottom: 30px;
 }
 
+/* 入力欄をボタンと同じ幅に統一 */
 .login-box input {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
+  box-sizing: border-box; /* 幅がボーダー込みで正確になる */
+}
+
+#loginBtn, #guestBtn {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  border: none;
 }
 
 #loginBtn {
-  width: 100%;
-  padding: 10px;
   background: #0095f6;
   color: #fff;
-  border: none;
-  border-radius: 6px;
-  margin-top: 10px;
-  font-weight: bold;
-  cursor: pointer;
 }
 
 #guestBtn {
-  width: 100%;
-  padding: 10px;
   background: #eee;
-  border: none;
-  border-radius: 6px;
-  margin-top: 10px;
-  cursor: pointer;
+  color: #000;
 }
 
 #goSignup {
