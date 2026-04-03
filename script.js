@@ -4,25 +4,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const goSignup = document.getElementById("goSignup");
 
   loginBtn?.addEventListener("click", () => {
-    const input = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
+    const input = document.getElementById("loginInput").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
 
-    const storedData = JSON.parse(localStorage.getItem("loginUserData") || "{}");
+    const storedData = JSON.parse(localStorage.getItem("userData"));
 
-    if(input === storedData.username && pass === storedData.password){
-      alert(`ようこそ ${storedData.username} さん！`);
-      location.href = "home.html"; // ログイン成功
+    if(!storedData){
+      alert("登録されたユーザーがいません");
+      return;
+    }
+
+    // メール/電話 or ユーザーネーム + パスワードで照合
+    if((input === storedData.username || input === storedData.contact) && password === storedData.password){
+      alert("ログイン成功！");
+      location.href = "home.html"; // ログイン後ページ
     } else {
       alert("ユーザー名かパスワードが違います");
     }
   });
 
   guestBtn?.addEventListener("click", () => {
-    localStorage.setItem("loginUserData", JSON.stringify({username:"guest"}));
-    location.href = "index.html";
+    localStorage.setItem("userData", JSON.stringify({ username: "guest", contact:"", password:"" }));
+    location.href = "home.html";
   });
 
   goSignup?.addEventListener("click", () => {
-    location.href = "../Signup/"; // Signup ページに移動
+    location.href = "../Signup/"; // Signupページに遷移
   });
 });
