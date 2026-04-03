@@ -2,24 +2,25 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Recomen - ログイン</title>
+  <title>Recomen - 新規登録</title>
   <link href="https://fonts.googleapis.com/css2?family=Galada&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+<div class="signup-container">
+  <div class="signup-box">
 
-<div class="login-container">
-  <div class="login-box">
-    <div class="logo">Recomen</div>
+    <div class="signup-logo">Recomen</div>
 
-    <input type="text" id="username" placeholder="ユーザーネーム">
-    <input type="password" id="password" placeholder="パスワード">
+    <!-- 追加：メールアドレスまたは電話番号 -->
+    <input type="text" id="newEmailOrPhone" placeholder="メールアドレスまたは電話番号">
 
-    <button id="loginBtn">ログイン</button>
-    <button id="guestBtn">ゲストログイン</button>
+    <input type="text" id="newUsername" placeholder="ユーザーネーム">
+    <input type="password" id="newPassword" placeholder="パスワード">
 
-    <p id="goSignup">新規登録はこちら</p>
+    <button id="signupBtn">登録</button>
+
   </div>
 </div>
 
