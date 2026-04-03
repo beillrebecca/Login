@@ -1,29 +1,29 @@
-const auth = firebase.auth();
+document.addEventListener("DOMContentLoaded", () => {
+  const loginBtn = document.getElementById("loginBtn");
 
-loginBtn?.addEventListener("click", async () => {
-  const input = document.getElementById("loginInput").value.trim();
-  const password = document.getElementById("loginPassword").value.trim();
+  loginBtn.addEventListener("click", async () => {
+    const email = document.getElementById("loginInput").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
 
-  try {
-    if (input.includes("@")) {
-      // メールログイン
-      const userCredential = await auth.signInWithEmailAndPassword(input, password);
+    if (!email || !password) {
+      alert("メールアドレスとパスワードを入力してください");
+      return;
+    }
+
+    try {
+      const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
       const user = userCredential.user;
 
       if (!user.emailVerified) {
-        alert("メール認証が完了していません");
+        alert("メールアドレスが認証されていません。確認メールをチェックしてください");
         return;
       }
 
       alert("ログイン成功！");
       window.location.href = "home.html";
 
-    } else {
-      // 電話番号ログインは SMS 認証フローが必要
-      alert("電話番号ログインは verify ページ経由です");
+    } catch (error) {
+      alert("ログインエラー: " + error.message);
     }
-
-  } catch (error) {
-    alert("ログインエラー: " + error.message);
-  }
+  });
 });
