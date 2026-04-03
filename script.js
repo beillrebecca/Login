@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const storedPass = localStorage.getItem("loginPass");
 
     if(user === storedUser && pass === storedPass){
-      location.href = "home.html";
+      location.href = "../Profile/";
     } else {
       alert("ユーザー名かパスワードが違います");
     }
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   guestBtn?.addEventListener("click", () => {
     localStorage.setItem("loginUser", "guest");
-    location.href = "index.html";
+    location.href = "../Signup/";
   });
 
   goSignup?.addEventListener("click", () => {
